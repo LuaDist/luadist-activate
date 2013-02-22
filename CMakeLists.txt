@@ -8,4 +8,4 @@ project ( luadist-activate NONE )
 cmake_minimum_required ( VERSION 2.8 )
 include ( cmake/dist.cmake )
 
-install( PROGRAMS activate RUNTIME DESTINATION ${INSTALL_BIN} COMPONENT Runtime )
+install( PROGRAMS activate DESTINATION ${INSTALL_BIN} COMPONENT Runtime )
