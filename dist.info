@@ -1,0 +1,16 @@
+type = "x86_64"
+arch = "Ubuntu"
+author = "Aistis Jokubauskas"
+desc = "Virtual LuaDist environment activation script, useful for seting up LuaDist workspace."
+name = "luadist-activate"
+maintainer = "Peter Drahoš"
+files = {
+Runtime = {
+[[bin/activate]],
+}
+,
+}
+
+license = "MIT/X11"
+url = "https://www.github.com/LuaDist/luadist-activate"
+version = "0.1"
