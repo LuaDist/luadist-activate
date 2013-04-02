@@ -67,12 +67,10 @@ deactivate nondestructive
 _SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LUA_VIRTUAL_PATH=`dirname $_SCRIPT_DIR`
 
-
 # bin path
 export _OLD_PATH="$PATH"
 PATH="$LUA_VIRTUAL_PATH/bin:$PATH"
 export PATH
-
 
 # path to C include
 test -n "$C_INCLUDE_PATH" \
@@ -81,24 +79,9 @@ test -n "$C_INCLUDE_PATH" \
 C_INCLUDE_PATH="$LUA_VIRTUAL_PATH/include"
 export C_INCLUDE_PATH
 
-
 # lua path
-test -n "$LUA_PATH" \
-    && export _OLD_LUA_PATH="$LUA_PATH" \
-    || export _OLD_LUA_PATH="-"
-
-LUA_PATH="./?"
-LUA_PATH="$LUA_PATH;./?.lua;"
-LUA_PATH="$LUA_PATH;$LUA_VIRTUAL_PATH/lib/lua/?.lua;"
-LUA_PATH="$LUA_PATH;$LUA_VIRTUAL_PATH/lib/lua/?/init.lua"
-export LUA_PATH
-
-test -n "$LUA_CPATH" \
-    && export _OLD_LUA_CPATH="$LUA_CPATH" \
-    || export _OLD_LUA_CPATH="-"
-LUA_CPATH="$LUA_VIRTUAL_PATH/lib/lua/?.so"
-export LUA_CPATH
-
+unset LUA_CPATH
+unset LUA_PATH
 
 # lib path for loader and linker
 test -n "$LD_LIBRARY_PATH" \
@@ -116,10 +99,6 @@ export LIBRARY_PATH
 
 # decorates PS1 to signal that this is altered shell
 export _OLD_PS1="$PS1"
-export PS1="(virtual)$PS1"
-
-
-# workaround for luadist runner
-alias luadist="$LUA_VIRTUAL_PATH/bin/luadist "
+export PS1="(LuaDist)$PS1"
 
 export LUA_DIST_VIRTUAL=1
