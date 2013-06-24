@@ -84,18 +84,13 @@ test -n "$LUA_PATH" \
     && export _OLD_LUA_PATH="$LUA_PATH" \
     || export _OLD_LUA_PATH="-"
 
-LUA_PATH="./?.lua"
-LUA_PATH="$LUA_PATH;./?/init.lua;"
-LUA_PATH="$LUA_PATH;$LUA_VIRTUAL_PATH/lib/lua/?.lua;"
-LUA_PATH="$LUA_PATH;$LUA_VIRTUAL_PATH/lib/lua/?/init.lua"
+LUA_PATH="./?.lua;./?/init.lua;$LUA_VIRTUAL_PATH/lib/lua/?.lua;$LUA_VIRTUAL_PATH/lib/lua/?/init.lua"
 export LUA_PATH
 
 test -n "$LUA_CPATH" \
     && export _OLD_LUA_CPATH="$LUA_CPATH" \
     || export _OLD_LUA_CPATH="-"
-LUA_CPATH="$./?.so"
-LUA_CPATH="$LUA_CPATH;$LUA_VIRTUAL_PATH/lib/lua/?.so"
-LUA_CPATH="$LUA_CPATH;$LUA_VIRTUAL_PATH/lib/lua/loadall.so"
+LUA_CPATH="$./?.so;$LUA_VIRTUAL_PATH/lib/lua/?.so;$LUA_VIRTUAL_PATH/lib/lua/loadall.so"
 export LUA_CPATH
 
 # lib path for loader and linker
